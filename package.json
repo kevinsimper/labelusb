@@ -1,24 +1,35 @@
 {
-  "name": "labelusb",
-  "version": "1.0.0",
-  "description": "Allow printing labels with WebUSB which would allow more people to easier print labels.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve src"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kevinsimper/labelusb.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kevinsimper/labelusb/issues"
-  },
-  "homepage": "https://github.com/kevinsimper/labelusb#readme",
-  "dependencies": {
-    "serve": "^10.0.0"
-  }
+    "name": "labelusb",
+    "version": "1.0.0",
+    "description": "WebUSB label printer (Brother)",
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prestart": "npm run build",
+        "build": "rollup --config && cp ./src/label.json ./src/index.html ./dist",
+        "watch": "rollup --config -w",
+        "start": "serve dist"
+    },
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/kevinsimper/labelusb.git"
+    },
+    "keywords": [
+        "webusb",
+        "label",
+        "brother"
+    ],
+    "author": "Pachito Marco Calabrese <pm.calabrese@gmail.com> & Kevin Simper <kevin.simper@gmail.com>",
+    "license": "ISC",
+    "module": "dist/index.esm.js",
+    "browser": "dist/index.umd.js",
+    "devDependencies": {
+        "rollup": "0.65.0",
+        "rollup-plugin-commonjs": "^9.1.0",
+        "rollup-plugin-node-resolve": "^3.0.0",
+        "serve": "^10.0.0"
+    },
+    "dependencies": {
+        "buffer": "^5.2.1"
+    }
 }

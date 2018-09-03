@@ -1,1 +1,4 @@
 node_modules
+label.bin
+label.json
+dist
